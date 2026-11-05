@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T00:00:00Z",
+  "title": "Design System: Poolthok",
+  "extensions": {
+    "colorMeta": {
+      "felt": {
+        "role": "primary",
+        "displayName": "Bottle Felt",
+        "canonical": "oklch(0.38 0.075 158)",
+        "tonalRamp": [
+          "oklch(0.15 0.075 158)",
+          "oklch(0.26 0.075 158)",
+          "oklch(0.37 0.075 158)",
+          "oklch(0.48 0.075 158)",
+          "oklch(0.6 0.075 158)",
+          "oklch(0.72 0.075 158)",
+          "oklch(0.84 0.075 158)",
+          "oklch(0.95 0.075 158)"
+        ]
+      },
+      "felt-deep": {
+        "role": "primary",
+        "displayName": "Deep Felt",
+        "canonical": "oklch(0.27 0.06 160)",
+        "tonalRamp": [
+          "oklch(0.15 0.06 160)",
+          "oklch(0.26 0.06 160)",
+          "oklch(0.37 0.06 160)",
+          "oklch(0.48 0.06 160)",
+          "oklch(0.6 0.06 160)",
+          "oklch(0.72 0.06 160)",
+          "oklch(0.84 0.06 160)",
+          "oklch(0.95 0.06 160)"
+        ]
+      },
+      "oxblood": {
+        "role": "secondary",
+        "displayName": "Oxblood",
+        "canonical": "oklch(0.42 0.13 22)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 22)",
+          "oklch(0.26 0.13 22)",
+          "oklch(0.37 0.13 22)",
+          "oklch(0.48 0.13 22)",
+          "oklch(0.6 0.13 22)",
+          "oklch(0.72 0.13 22)",
+          "oklch(0.84 0.13 22)",
+          "oklch(0.95 0.13 22)"
+        ]
+      },
+      "brass": {
+        "role": "tertiary",
+        "displayName": "Brass",
+        "canonical": "oklch(0.8 0.12 85)",
+        "tonalRamp": [
+          "oklch(0.15 0.12 85)",
+          "oklch(0.26 0.12 85)",
+          "oklch(0.37 0.12 85)",
+          "oklch(0.48 0.12 85)",
+          "oklch(0.6 0.12 85)",
+          "oklch(0.72 0.12 85)",
+          "oklch(0.84 0.12 85)",
+          "oklch(0.95 0.12 85)"
+        ]
+      },
+      "rail": {
+        "role": "neutral",
+        "displayName": "Rail Green",
+        "canonical": "oklch(0.21 0.035 162)",
+        "tonalRamp": [
+          "oklch(0.15 0.035 162)",
+          "oklch(0.26 0.035 162)",
+          "oklch(0.37 0.035 162)",
+          "oklch(0.48 0.035 162)",
+          "oklch(0.6 0.035 162)",
+          "oklch(0.72 0.035 162)",
+          "oklch(0.84 0.035 162)",
+          "oklch(0.95 0.035 162)"
+        ]
+      },
+      "on-felt": {
+        "role": "neutral",
+        "displayName": "Felt Light",
+        "canonical": "oklch(0.96 0.015 150)",
+        "tonalRamp": [
+          "oklch(0.15 0.015 150)",
+          "oklch(0.26 0.015 150)",
+          "oklch(0.37 0.015 150)",
+          "oklch(0.48 0.015 150)",
+          "oklch(0.6 0.015 150)",
+          "oklch(0.72 0.015 150)",
+          "oklch(0.84 0.015 150)",
+          "oklch(0.95 0.015 150)"
+        ]
+      },
+      "on-felt-dim": {
+        "role": "neutral",
+        "displayName": "Felt Dim",
+        "canonical": "oklch(0.8 0.04 155)",
+        "tonalRamp": [
+          "oklch(0.15 0.04 155)",
+          "oklch(0.26 0.04 155)",
+          "oklch(0.37 0.04 155)",
+          "oklch(0.48 0.04 155)",
+          "oklch(0.6 0.04 155)",
+          "oklch(0.72 0.04 155)",
+          "oklch(0.84 0.04 155)",
+          "oklch(0.95 0.04 155)"
+        ]
+      },
+      "stock": {
+        "role": "neutral",
+        "displayName": "Card Stock",
+        "canonical": "oklch(0.985 0.003 100)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 100)",
+          "oklch(0.26 0.003 100)",
+          "oklch(0.37 0.003 100)",
+          "oklch(0.48 0.003 100)",
+          "oklch(0.6 0.003 100)",
+          "oklch(0.72 0.003 100)",
+          "oklch(0.84 0.003 100)",
+          "oklch(0.95 0.003 100)"
+        ]
+      },
+      "stock-edge": {
+        "role": "neutral",
+        "displayName": "Stock Edge",
+        "canonical": "oklch(0.88 0.008 120)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 120)",
+          "oklch(0.26 0.008 120)",
+          "oklch(0.37 0.008 120)",
+          "oklch(0.48 0.008 120)",
+          "oklch(0.6 0.008 120)",
+          "oklch(0.72 0.008 120)",
+          "oklch(0.84 0.008 120)",
+          "oklch(0.95 0.008 120)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(0.2 0.015 160)",
+        "tonalRamp": [
+          "oklch(0.15 0.015 160)",
+          "oklch(0.26 0.015 160)",
+          "oklch(0.37 0.015 160)",
+          "oklch(0.48 0.015 160)",
+          "oklch(0.6 0.015 160)",
+          "oklch(0.72 0.015 160)",
+          "oklch(0.84 0.015 160)",
+          "oklch(0.95 0.015 160)"
+        ]
+      },
+      "ink-dim": {
+        "role": "neutral",
+        "displayName": "Ink Dim",
+        "canonical": "oklch(0.45 0.02 160)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 160)",
+          "oklch(0.26 0.02 160)",
+          "oklch(0.37 0.02 160)",
+          "oklch(0.48 0.02 160)",
+          "oklch(0.6 0.02 160)",
+          "oklch(0.72 0.02 160)",
+          "oklch(0.84 0.02 160)",
+          "oklch(0.95 0.02 160)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Average numeral",
+        "purpose": "Revealed average only."
+      },
+      "headline": {
+        "displayName": "Join title",
+        "purpose": "Poolthok on the join card."
+      },
+      "title": {
+        "displayName": "Wordmark",
+        "purpose": "Rail wordmark."
+      },
+      "body": {
+        "displayName": "UI sans",
+        "purpose": "All UI text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, banner, Average label; sentence case."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-rest",
+        "value": "0 1px 0 var(--stock-edge), 0 6px 14px oklch(0 0 0 / 0.28)",
+        "purpose": "Every card at rest."
+      },
+      {
+        "name": "card-picked",
+        "value": "0 0 0 2px var(--ink), 0 16px 28px oklch(0 0 0 / 0.4)",
+        "purpose": "Picked hand card."
+      },
+      {
+        "name": "join-card",
+        "value": "0 2px 0 var(--stock-edge), 0 24px 60px oklch(0 0 0 / 0.4)",
+        "purpose": "Join card."
+      },
+      {
+        "name": "button-primary",
+        "value": "0 8px 20px oklch(0 0 0 / 0.25)",
+        "purpose": "Primary button; only control with a shadow."
+      },
+      {
+        "name": "rail",
+        "value": "0 1px 0 oklch(1 0 0 / 0.06), 0 6px 18px oklch(0 0 0 / 0.25)",
+        "purpose": "Top rail."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All transitions and keyframes."
+      },
+      {
+        "name": "flip",
+        "value": "transform 0.7s, stagger 90ms per seat",
+        "purpose": "Reveal."
+      },
+      {
+        "name": "deal",
+        "value": "0.7s translateY(24px) rotate(-3deg) in",
+        "purpose": "Join card entrance."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Facilitator action on felt.",
+      "html": "<button class=\"ds-btn-primary\">Reveal cards</button>",
+      "css": ".ds-btn-primary{height:44px;padding:0 22px;border:0;border-radius:8px;background:var(--stock);color:var(--ink);font-weight:600;box-shadow:0 8px 20px oklch(0 0 0/.25);transition:transform .2s var(--ease)}.ds-btn-primary:hover{transform:translateY(-1px)}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid var(--on-felt);outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Rail and secondary actions.",
+      "html": "<button class=\"ds-btn-ghost\">Hide cards</button>",
+      "css": ".ds-btn-ghost{height:36px;padding:0 14px;border:1px solid oklch(1 0 0/.16);border-radius:8px;background:none;color:var(--on-felt);font-weight:600;transition:background .2s}.ds-btn-ghost:hover{background:oklch(1 0 0/.08)}.ds-btn-ghost:focus-visible{outline:2px solid var(--on-felt);outline-offset:3px}"
+    },
+    {
+      "name": "Card Face",
+      "kind": "card",
+      "refersTo": "card-face",
+      "description": "Stock card with corner indices.",
+      "html": "<div class=\"ds-card\"><span class=\"ds-i\">8</span><span class=\"ds-pip\">8</span><span class=\"ds-i ds-br\">8</span></div>",
+      "css": ".ds-card{position:relative;width:78px;aspect-ratio:5/7;border-radius:8px;background:var(--stock);color:var(--ink);box-shadow:0 1px 0 var(--stock-edge),0 6px 14px oklch(0 0 0/.28)}.ds-i{position:absolute;top:5px;left:7px;font:700 .8rem/1 var(--numeral)}.ds-br{top:auto;left:auto;bottom:5px;right:7px;transform:rotate(180deg)}.ds-pip{position:absolute;inset:0;display:grid;place-items:center;font:500 1.9rem/1 var(--numeral)}"
+    },
+    {
+      "name": "Card Back",
+      "kind": "card",
+      "refersTo": "card-back",
+      "description": "Face-down vote.",
+      "html": "<div class=\"ds-back\"></div>",
+      "css": ".ds-back{position:relative;width:78px;aspect-ratio:5/7;border-radius:8px;background:var(--stock);box-shadow:0 1px 0 var(--stock-edge),0 6px 14px oklch(0 0 0/.28)}.ds-back::before{content:'';position:absolute;inset:4px;border-radius:5px;background:repeating-linear-gradient(45deg,oklch(1 0 0/.16) 0 1px,transparent 1px 7px),repeating-linear-gradient(-45deg,oklch(1 0 0/.16) 0 1px,transparent 1px 7px),var(--oxblood)}"
+    },
+    {
+      "name": "Empty Slot",
+      "kind": "custom",
+      "description": "Seat not yet voted.",
+      "html": "<div class=\"ds-slot\"></div>",
+      "css": ".ds-slot{width:78px;aspect-ratio:5/7;border-radius:8px;border:1.5px dashed oklch(1 0 0/.28)}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Join card input.",
+      "html": "<input class=\"ds-input\" placeholder=\"Your name\">",
+      "css": ".ds-input{height:44px;padding:0 12px;border:1px solid var(--stock-edge);border-radius:8px;background:#fff;color:var(--ink);caret-color:var(--oxblood);transition:border-color .2s,box-shadow .2s}.ds-input:focus{outline:none;border-color:var(--felt);box-shadow:0 0 0 3px oklch(0.38 0.075 158/.2)}"
+    },
+    {
+      "name": "Consensus Mark",
+      "kind": "chip",
+      "refersTo": "consensus-mark",
+      "description": "Only brass in the system.",
+      "html": "<span class=\"ds-consensus\">Consensus</span>",
+      "css": ".ds-consensus{padding:4px 12px;border-radius:999px;font-size:.85rem;font-weight:700;color:var(--ink);background:var(--brass)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Card Table",
+    "overview": "Felt table; a vote is a face-down card at your seat; the reveal turns them all at once. Bright card stock is the only light surface; oxblood backs, Bodoni numerals, brass only for consensus.",
+    "keyCharacteristics": [
+      "Felt owns the viewport",
+      "Bodoni numerals, system sans UI",
+      "Printed corner indices",
+      "State shown as card state"
+    ],
+    "rules": [
+      {
+        "name": "The Brass Is Consensus Rule",
+        "body": "Brass appears only on the Consensus mark.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Surfaces Rule",
+        "body": "On-felt text on felt, ink on stock; never crossed.",
+        "section": "colors"
+      },
+      {
+        "name": "The Numerals Are Printed Rule",
+        "body": "Bodoni only for values, average, wordmark.",
+        "section": "typography"
+      },
+      {
+        "name": "The Soft Shadow Rule",
+        "body": "Shadows are ambient; never hard offset; buttons are the only controls with one.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do show vote state as slot, back, face.",
+      "Do print rotated corner indices on every face.",
+      "Do set Average below the numeral in plain case.",
+      "Do use on-felt for focus and selection on felt."
+    ],
+    "donts": [
+      "Don't use status dots or leak a value before reveal.",
+      "Don't use brass outside Consensus.",
+      "Don't add kickers/eyebrows or hard offset shadows.",
+      "Don't dim a whole offline seat; dim only the card slot."
+    ]
+  }
+}
