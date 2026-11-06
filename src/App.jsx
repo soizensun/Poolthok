@@ -97,6 +97,12 @@ function Room({ room, name, isHost, onLeave }) {
     setTimeout(() => setCopied(false), 1600)
   }
 
+  // Only the creator's browser holds the room, so leaving ends it for everyone.
+  const leaveLabel = isHost ? 'End room' : 'Leave room'
+  const leave = () => {
+    if (!isHost || confirm('End the room for everyone? Their votes will be lost.')) onLeave()
+  }
+
   let line
   if (revealed) line = null
   else if (!present.length) line = isHost ? 'Setting the table…' : 'The facilitator opens the table. Hang tight.'
@@ -106,7 +112,7 @@ function Room({ room, name, isHost, onLeave }) {
   return (
     <div className="room">
       <header className="rail">
-        <span className="wordmark">Poolthok</span>
+        <h1 className="wordmark">Poolthok</h1>
         <span className="code" title="Room code">#{room}</span>
         <button className="btn ghost" onClick={copy} aria-label={copied ? 'Copied' : 'Copy link'}>
           {copied ? <IconCheck /> : <IconLink />}
@@ -115,17 +121,22 @@ function Room({ room, name, isHost, onLeave }) {
         <span className="count" aria-live="polite">
           <b>{votedCount}</b> / {present.length} voted
         </span>
-        <button className="btn ghost icon" onClick={onLeave} aria-label="Leave room" title="Leave room">
+        <button className="btn ghost icon" onClick={leave} aria-label={leaveLabel} title={leaveLabel}>
           <IconLeave />
         </button>
       </header>
 
       {status !== 'online' && (
         <div className="banner" role="status">
-          <span className="pulse" aria-hidden="true" />
-          {status === 'connecting'
-            ? isHost ? 'Opening the room…' : 'Looking for the facilitator…'
-            : isHost ? 'Reconnecting…' : 'Reconnecting to the facilitator…'}
+          {status !== 'notfound' && <span className="pulse" aria-hidden="true" />}
+          {status === 'notfound' ? (
+            <>
+              No room #{room} is open. Check the code with your facilitator.
+              <button className="btn ghost" onClick={onLeave}>Change room</button>
+            </>
+          ) : status === 'connecting' ? (
+            isHost ? 'Opening the room…' : 'Looking for the facilitator…'
+          ) : isHost ? 'Reconnecting…' : 'Reconnecting to the facilitator…'}
         </div>
       )}
 

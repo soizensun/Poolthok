@@ -7,6 +7,7 @@ const RETRY_MS = 2000
 const DROP_OFFLINE_MS = 60000
 const BEAT_MS = 3000 // both sides ping; silence for SILENT_MS means the other side is gone
 const SILENT_MS = 10000
+const NOT_FOUND_MS = 15000 // a member who never reached the room probably has the wrong code
 
 // sessionStorage lives in this browser tab only: nothing is stored on a server.
 export const store = {
@@ -46,7 +47,7 @@ function snapshot(state, viewerId) {
 export function useRoom({ room, name, isHost }) {
   const me = myId()
   const [view, setView] = useState({ players: [], revealed: false })
-  const [status, setStatus] = useState('connecting') // connecting | online | reconnecting
+  const [status, setStatus] = useState('connecting') // connecting | online | reconnecting | notfound
   const api = useRef(() => {})
 
   useEffect(() => {
@@ -152,10 +153,14 @@ export function useRoom({ room, name, isHost }) {
     let conn
     let lastSeen = 0
     const voteKey = 'vote:' + room
+    let reached = false
+    // Keep retrying in the background, but tell the person if the room never answers.
+    const notFound = setTimeout(() => alive && !reached && setStatus('notfound'), NOT_FOUND_MS)
     const connect = () => {
       if (!alive || peer.destroyed) return
       conn = peer.connect(PREFIX + room, { reliable: true })
       conn.on('open', () => {
+        reached = true
         setStatus('online')
         lastSeen = Date.now()
         conn.send({ type: 'join', id: me, name, vote: store.get(voteKey) })
@@ -166,14 +171,14 @@ export function useRoom({ room, name, isHost }) {
         setView(snap)
         if (!snap.revealed) store.set(voteKey, snap.players.find((p) => p.id === me)?.vote ?? null)
       })
-      conn.on('close', () => { setStatus((s) => (s === 'connecting' ? s : 'reconnecting')); later(connect) })
+      conn.on('close', () => { setStatus((s) => (s === 'online' ? 'reconnecting' : s)); later(connect) })
     }
     const start = () => {
       peer = new Peer()
       peer.on('open', connect)
       peer.on('disconnected', () => alive && !peer.destroyed && peer.reconnect())
       peer.on('error', (err) => {
-        setStatus((s) => (s === 'connecting' ? s : 'reconnecting'))
+        setStatus((s) => (s === 'online' ? 'reconnecting' : s))
         if (err.type === 'peer-unavailable') later(connect) // facilitator not here (yet)
         else { peer.destroy(); later(start) }
       })
@@ -194,7 +199,7 @@ export function useRoom({ room, name, isHost }) {
     const bye = () => conn?.open && conn.send({ type: 'bye' })
     addEventListener('pagehide', bye)
     start()
-    return () => { alive = false; bye(); clearTimeout(timer); clearInterval(beat); removeEventListener('pagehide', bye); peer?.destroy() }
+    return () => { alive = false; bye(); clearTimeout(timer); clearTimeout(notFound); clearInterval(beat); removeEventListener('pagehide', bye); peer?.destroy() }
   }, [room, name, isHost, me])
 
   return {
