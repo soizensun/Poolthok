@@ -52,10 +52,11 @@ function Join({ onJoin }) {
       <Fan dir="up" />
       <Fan dir="down" />
       <Note className="note-name" arrow="right">no sign-up, just your name</Note>
-      <Note className="note-host" arrow="left">running grooming? flip this</Note>
+      <Note className="note-host" arrow="left">running grooming? toggle “I'm the facilitator”</Note>
+      {!isHost && !linkRoom && (
+        <Note className="note-code" arrow="right">if not, grab the room code or link from your facilitator</Note>
+      )}
       <form className="join-card" onSubmit={submit}>
-        <span className="index" aria-hidden="true">P</span>
-        <span className="index br" aria-hidden="true">P</span>
         <h1>Poolthok</h1>
         <p className="lede">Planning poker for sprint grooming.</p>
 
@@ -70,10 +71,11 @@ function Join({ onJoin }) {
           <span>I'm the facilitator</span>
         </label>
 
-        {!isHost && !linkRoom && (
+        {/* Disabled, not removed, for the facilitator, so the card keeps its size and place when the switch flips. */}
+        {!linkRoom && (
           <label className="field">
             <span>Room code</span>
-            <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="From the facilitator's link" required autoComplete="off" spellCheck="false" />
+            <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="From the facilitator's link" disabled={isHost} required={!isHost} autoComplete="off" spellCheck="false" />
           </label>
         )}
 
@@ -202,7 +204,7 @@ function Room({ room, name, isHost, onLeave }) {
                   <IconHide />
                   <span>Hide cards</span>
                 </button>
-                <button className="btn primary" onClick={next}>Next round</button>
+                <button className="btn primary" onClick={next}>Reset</button>
               </>
             ) : (
               <button className="btn primary" onClick={reveal} disabled={!votedCount}>Reveal cards</button>
