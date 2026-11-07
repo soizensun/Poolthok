@@ -33,8 +33,10 @@ No accounts, no backend, no stored data: the facilitator's browser is the room. 
 - Roles: member and facilitator. The room creator is a facilitator and can make any member a facilitator too (or remove the role). Facilitators also vote, and only they can Reveal, Hide cards (undo a reveal, votes kept) and start the Next round. Only the creator's browser holds the room.
 - Deck: 0.5, 1, 2, 3, 5, 8, 13. No "?" or coffee card.
 - Before reveal, others see only whether a person has voted (status colour), never the value.
-- On reveal: every card flips to show its value, plus the average and a "Consensus" marker when all votes match.
+- On reveal: every card flips to show its value. The majority (most-picked value, or the tied values when split) is shown large, with the average in small text below. A "Consensus" marker replaces both when all votes match.
 - Real-time sync is peer-to-peer (WebRTC via PeerJS and its public signaling server). No server storage. Each browser keeps its own name, role, room and vote in sessionStorage so a refresh rejoins the same seat.
+- Pop out: in Chrome and Edge on desktop, the room can float in a small always-on-top window (Document Picture-in-Picture) so it stays visible over Jira during grooming. It must be opened by a click: browsers do not let a page float itself automatically when you switch tabs. Other browsers hide the button.
+- Hide my hand: a switch beside the hand turns your cards face-down for people sharing their screen in the call. Picking is paused while it is on.
 - Known limits: the room ends if the facilitator closes their tab for good; some corporate networks block WebRTC.
 - UI copy is English.
 
