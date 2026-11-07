@@ -105,9 +105,9 @@ label.switch, .fan-card, select, summary, a[href] { cursor: pointer; }
 }
 .join::before { inset: max(20px, 50% - 340px) max(16px, 50% - 560px); border: 2px solid oklch(0.96 0.015 150 / 0.42); }
 .join::after { inset: max(34px, 50% - 326px) max(30px, 50% - 546px); border: 1px solid oklch(0.96 0.015 150 / 0.2); }
-.join-stack { position: relative; width: min(100%, 380px); margin: 128px 0 108px; }
+.join-stack { position: relative; width: min(100%, 380px); margin: 138px 0 122px; }
 /* Pinned to the join card's top edge, so the same strip of every card shows at any height. */
-.join-fan { position: absolute; z-index: -1; left: 50%; top: -128px; }
+.join-fan { position: absolute; z-index: -1; left: 50%; top: -138px; }
 .fan-card {
   position: absolute; left: -48px; top: 0;
   width: 96px; aspect-ratio: 5 / 7;
@@ -122,7 +122,7 @@ label.switch, .fan-card, select, summary, a[href] { cursor: pointer; }
 .fan-inner .back { transform: rotateY(180deg); }
 .fan-card[data-turned='true'] .fan-inner { transform: rotateY(180deg); }
 /* The lower fan hangs from under the card's bottom edge, face-down until clicked. */
-.join-fan.down { top: calc(100% - 26px); }
+.join-fan.down { top: calc(100% - 14px); }
 .join-fan.down .fan-card { transform-origin: 50% -200%; rotate: calc(var(--i) * -13deg); }
 .join-fan.down .fan-inner { transform: rotateY(180deg); }
 .join-fan.down .fan-card[data-turned='true'] .fan-inner { transform: none; }
@@ -136,13 +136,14 @@ label.switch, .fan-card, select, summary, a[href] { cursor: pointer; }
 .join-fan .index { font-size: 0.85rem; top: 6px; left: 8px; }
 .join-fan .index.br { top: auto; left: auto; bottom: 6px; right: 8px; }
 @media (max-height: 860px) {
-  .join-stack { margin: 104px 0 92px; }
-  .join-fan { top: -106px; }
+  .join-stack { margin: 116px 0 104px; }
+  .join-fan { top: -116px; }
+  .join-fan.down { top: calc(100% - 20px); }
 }
 @media (max-height: 740px) {
-  .join-stack { margin: 84px 0 72px; }
-  .join-fan { top: -86px; }
-  .join-fan.down { top: calc(100% - 50px); }
+  .join-stack { margin: 104px 0 92px; }
+  .join-fan { top: -106px; }
+  .join-fan.down { top: calc(100% - 26px); }
 }
 .join-card {
   position: relative;
@@ -151,11 +152,16 @@ label.switch, .fan-card, select, summary, a[href] { cursor: pointer; }
   padding: 44px 36px 44px;
   border-radius: 10px;
   background: var(--stock); color: var(--ink);
-  box-shadow: 0 2px 0 var(--stock-edge), 0 24px 60px oklch(0 0 0 / 0.4);
-  animation: deal 0.7s var(--ease) both;
+  /* Lit top edge, the stock's thickness, then a soft near shadow. The far one is cast on the felt below. */
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.9), 0 2px 0 var(--stock-edge), 0 4px 10px oklch(0 0 0 / 0.18), 0 36px 70px -12px oklch(0 0 0 / 0.5);
 }
-.join-card .index { position: absolute; top: 14px; left: 16px; font: 700 1.1rem/1 var(--numeral); color: var(--oxblood); }
-.join-card .index.br { top: auto; left: auto; bottom: 14px; right: 16px; transform: rotate(180deg); }
+/* The card's shadow lies on the felt (over the fanned deck), far below it: that gap is the height. */
+.join-stack::after {
+  content: ''; position: absolute; z-index: -1; inset: 0; pointer-events: none;
+  border-radius: 14px; background: oklch(0.1 0.03 160 / 0.78);
+  filter: blur(18px);
+  transform: translateY(78px) scale(0.95);
+}
 .join-card h1 { margin: 0; font: 700 2.75rem/1 var(--numeral); letter-spacing: -0.02em; text-align: center; }
 .lede { margin: -10px 0 8px; text-align: center; color: var(--ink-dim); }
 .field { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 0.85rem; }
@@ -167,6 +173,9 @@ label.switch, .fan-card, select, summary, a[href] { cursor: pointer; }
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .field input::placeholder { color: oklch(0.55 0.015 160); }
+.field:has(input:disabled) { color: var(--ink-dim); cursor: not-allowed; }
+.field input:disabled { background: oklch(0.94 0.008 150); border-color: var(--stock-edge); color: var(--ink-dim); cursor: not-allowed; }
+.field input:disabled::placeholder { color: oklch(0.62 0.012 160); }
 .field input:focus { outline: none; border-color: var(--felt); box-shadow: 0 0 0 3px oklch(0.38 0.075 158 / 0.2); }
 .join-card :focus-visible { outline-color: var(--felt); }
 .join-card .btn.primary { justify-content: center; margin-top: 6px; background: var(--felt); color: var(--on-felt); box-shadow: 0 8px 20px oklch(0 0 0 / 0.25); }
@@ -384,13 +393,15 @@ label.switch, .fan-card, select, summary, a[href] { cursor: pointer; }
 .note-arrow path { stroke-dasharray: 1; animation: draw 0.6s cubic-bezier(0.5, 0, 0.3, 1) 1.5s backwards; }
 .note-name { right: calc(100% + 18px); top: 112px; width: 170px; text-align: right; rotate: -5deg; animation: rise 0.6s var(--ease) 1.2s backwards; }
 .note-name .note-arrow { margin-left: auto; margin-right: -16px; }
-.note-host { left: calc(100% + 18px); top: 190px; width: 170px; rotate: 4deg; animation: rise 0.6s var(--ease) 1.35s backwards; }
+.note-host { left: calc(100% + 18px); top: 148px; width: 170px; rotate: 4deg; animation: rise 0.6s var(--ease) 1.35s backwards; }
 .note-host .note-arrow { margin-left: -16px; }
+.note-code { right: calc(100% + 18px); top: 222px; width: 190px; text-align: right; rotate: -3deg; animation: rise 0.6s var(--ease) 1.5s backwards; }
+.note-code .note-arrow { margin-left: auto; margin-right: -16px; }
 .note-hand { bottom: 22px; right: calc(50% + 262px); width: 170px; text-align: right; rotate: -4deg; animation: rise 0.6s var(--ease) 0.3s backwards; }
 .note-hand .note-arrow { margin-left: auto; margin-right: -22px; }
 .note-hand .note-arrow path { animation-delay: 0.6s; }
 .room { position: relative; }
-@media (max-width: 920px) { .note-name, .note-host { display: none; } }
+@media (max-width: 920px) { .note-name, .note-host, .note-code { display: none; } }
 @media (max-width: 860px) {
   .note-hand { display: none; }
   .hand-toggle { left: auto; right: 14px; bottom: calc(var(--hand-w) * 1.2 + 36px); }
@@ -462,7 +473,6 @@ label.switch, .fan-card, select, summary, a[href] { cursor: pointer; }
 @keyframes turn-over { from { scale: 0 1; } }
 @keyframes draw { from { stroke-dashoffset: 1; } }
 @keyframes fan { from { rotate: 0deg; opacity: 0; } }
-@keyframes deal { from { opacity: 0; transform: translateY(24px) rotate(-3deg); } }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 @keyframes pulse { 50% { opacity: 0.3; } }
 
@@ -489,9 +499,10 @@ label.switch, .fan-card, select, summary, a[href] { cursor: pointer; }
   .hand-card .index { font-size: 0.6rem; top: 4px; left: 5px; }
   .hand-card .index.br { top: auto; left: auto; bottom: 4px; right: 5px; }
   .join-card { padding: 40px 24px 44px; }
-  .join-stack { margin: 74px 0 64px; }
-  .join-fan { top: -74px; }
-  .join-fan.down { top: calc(100% - 14px); }
+  .join-stack::after { transform: translateY(44px) scale(0.95); filter: blur(14px); }
+  .join-stack { margin: 80px 0 72px; }
+  .join-fan { top: -80px; }
+  .join-fan.down { top: calc(100% - 8px); }
   .fan-card { width: 56px; left: -28px; rotate: calc(var(--i) * 10deg); }
   .join-fan.down .fan-card { rotate: calc(var(--i) * -10deg); }
   .join-fan .pip { font-size: 1.3rem; }

@@ -119,7 +119,7 @@ Dark green felt, warm-white stock, and two printed inks: oxblood and brass.
 - **Deep Felt** (felt-deep): the gradient edge and the page background colour.
 
 ### Secondary
-- **Oxblood** (oxblood): card backs (under a fine white diamond lattice), the corner indices on every card face (the pips stay ink), the ring around your picked card, the reconnecting banner, the join card's "P" indices, and the input caret.
+- **Oxblood** (oxblood): card backs (under a fine white diamond lattice), the corner indices on every card face (the pips stay ink), the ring around your picked card, the reconnecting banner, and the input caret.
 - **Marker** (marker): red marker ink for the handwritten notes and the loop drawn around the revealed majority. It is lighter than oxblood so it reads on felt (about 3:1, used only at handwriting sizes of 1.5rem or larger). This is the one exception to the Two Surfaces Rule.
 
 ### Tertiary
@@ -164,7 +164,7 @@ Depth comes from physical objects. Cards, the join card and the rail cast soft, 
 
 - **Card rest:** `0 1px 0 stock-edge, 0 6px 14px oklch(0 0 0 / 0.28)`. A stock lip plus a table shadow.
 - **Card picked:** `0 0 0 2.5px oxblood, 0 16px 28px oklch(0 0 0 / 0.4)`. Lifted 30px and straightened.
-- **Join card:** `0 2px 0 stock-edge, 0 24px 60px oklch(0 0 0 / 0.4)`.
+- **Join card:** it hangs high above the felt. Its own shadow is `inset 0 1px 0 white/90%, 0 2px 0 stock-edge, 0 4px 10px oklch(0 0 0 / 0.18), 0 36px 70px -12px oklch(0 0 0 / 0.5)` (lit top edge, stock thickness, near and far shadow). A separate card-shaped shadow is cast on the felt 78px below it (blur 18px, 95% scale, deep-felt black at 78%), over the face-down deck, so the gap between card and shadow reads as height. It holds still. On phones the cast shadow sits 44px down.
 - **Primary button:** `0 8px 20px oklch(0 0 0 / 0.25)`, smaller when pressed.
 - **Rail:** `0 1px 0 oklch(1 0 0 / 0.06), 0 6px 18px oklch(0 0 0 / 0.25)`.
 
@@ -187,7 +187,7 @@ Each seat has a slot, a card that flips, a name and a role line. States: empty (
 Seven stock cards. Hovering a card raises it 14px. The picked card straightens, rises 30px and gets the oxblood ring. After reveal the other cards dim with brightness 0.7.
 
 ### Join card
-An oversized card (380px max, 44px top and bottom padding) with oxblood "P" corner indices. It deals in from below (0.7s). It sits on the same printed racetrack as the room (up to 1120×680, centred). Behind it, the whole deck (½ to 13, 96px cards, 56px on phones) fans out from under its top edge. The fan pivots 300% below each card and is spaced 13deg apart (10deg on phones). It is pinned to the card's top edge, so the same strip shows at any height (128px, or 106px on screens under 860px tall), and it fans open from a stacked deck after the card lands (0.9s, 40ms stagger). On devices that can hover, hovering a fan card draws it 26px up out of the fan along its own angle, with a deeper shadow (0.4s). It holds the field inputs (44px, felt focus ring at 20%) and a facilitator toggle (44×26 track).
+An oversized card (380px max, 44px top and bottom padding) with no corner indices. It is there from the first frame, with no entrance animation, floating above the table (see Elevation). It sits on the same printed racetrack as the room (up to 1120×680, centred). Behind it, the whole deck (½ to 13, 96px cards, 56px on phones) fans out from under its top edge. The fan pivots 300% below each card and is spaced 13deg apart (10deg on phones). It is pinned to the card's top edge, so the same strip shows at any height (138px; 116px under 860px tall, 106px under 740px, 80px on phones), and it fans open from a stacked deck on load (0.9s, 40ms stagger). On devices that can hover, hovering a fan card draws it 26px up out of the fan along its own angle, with a deeper shadow (0.4s). It holds the field inputs (44px, felt focus ring at 20%) and a facilitator toggle (44×26 track).
 
 ### Join fans
 There are two fans of the deck on the join page. The upper one is face-up and spreads from behind the card's top edge. The lower one is face-down (oxblood backs) and hangs from under the card's bottom edge: it pivots 200% above itself and is spaced -13deg apart (-10deg on phones). Hovering a card draws it out of its fan along its own angle (up for the top fan, down for the bottom). Clicking turns it over, so the top fan shows backs and the bottom fan shows faces. Vertical room is reserved for both fans (128/108px, 104/92px under 860px tall, 84/72px under 740px tall, 74/64px on phones), so the page never scrolls.
@@ -197,7 +197,7 @@ A small on-felt switch labelled "Hide my hand" sits beside the hand (above it, r
 
 ### Handwritten notes (the gimmick)
 These are red marker scribbles on the felt, as if someone annotated the table: Caveat 600 at 1.55rem in marker red, tilted 4–5deg, each with a hand-drawn arrow that draws itself in (0.6s). They are decorative (aria-hidden) and never carry information the UI doesn't already show.
-- Join page: "no sign-up, just your name" points at the name field from the left, and "running grooming? flip this" points at the facilitator switch from the right. Hidden under 920px.
+- Join page: "no sign-up, just your name" points at the name field from the left, "running grooming? toggle “I'm the facilitator”" points at the facilitator switch from the right, and "if not, grab the room code or link from your facilitator" points at the room code field from the left (only while that field is shown). Hidden under 920px.
 - Room: "pick a card, nobody peeks" sits beside the hand, pointing at it, until you vote. Hidden under 860px and in the floating window.
 - Reveal: a loose marker loop draws itself around the majority (0.7s, after the cards turn). It is not drawn on Consensus, which has its own moment.
 
